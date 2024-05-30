@@ -1,0 +1,697 @@
+---
+title: "Web-Scraping"
+author: "Fida Fariha Amatullah"
+date: "2024-05-22"
+output: html_document
+---
+#============================================================= SAMEHADAKU =====================================================
+
+```{r}
+library(rvest)
+library(tidyverse)
+library(mongolite)
+library(xml2)
+library(dplyr)
+library(tidyr)
+library(stringr)
+```
+
+#================================================== PAGE 1 ====================================================================
+```{r}
+url1 <- "https://samehadaku.email/daftar-anime-2/?order=latest&status=&type="
+html <- read_html(url1)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 2 ====================================================================
+
+```{r}
+url2 <- "https://samehadaku.email/daftar-anime-2/page/2/?order=latest&status&type"
+html <- read_html(url2)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 3 ====================================================================
+
+
+```{r}
+url3 <- "https://samehadaku.email/daftar-anime-2/page/3/?order=latest&status&type"
+html <- read_html(url3)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 4 ====================================================================
+
+```{r}
+url4 <- "https://samehadaku.email/daftar-anime-2/page/4/?order=latest&status&type"
+html <- read_html(url4)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 5 ====================================================================
+
+
+```{r}
+url5 <- "https://samehadaku.email/daftar-anime-2/page/5/?order=latest&status&type"
+html <- read_html(url5)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 6 ====================================================================
+
+```{r}
+url6 <- "https://samehadaku.email/daftar-anime-2/page/6/?order=latest&status&type"
+html <- read_html(url6)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 7 ====================================================================
+
+```{r}
+url7 <- "https://samehadaku.email/daftar-anime-2/page/7/?order=latest&status&type"
+html <- read_html(url7)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 8 ====================================================================
+
+```{r}
+url8 <- "https://samehadaku.email/daftar-anime-2/page/8/?order=latest&status&type"
+html <- read_html(url8)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 9 ====================================================================
+
+```{r}
+url9 <- "https://samehadaku.email/daftar-anime-2/page/9/?order=latest&status&type"
+html <- read_html(url9)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 10 ====================================================================
+
+```{r}
+url10 <- "https://samehadaku.email/daftar-anime-2/page/10/?order=latest&status&type"
+html <- read_html(url10)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 11 ====================================================================
+
+```{r}
+url11 <- "https://samehadaku.email/daftar-anime-2/page/11/?order=latest&status&type"
+html <- read_html(url11)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 12 ====================================================================
+
+```{r}
+url12 <- "https://samehadaku.email/daftar-anime-2/page/12/?order=latest&status&type"
+html <- read_html(url12)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+#================================================== PAGE 13 ====================================================================
+
+```{r}
+url13 <- "https://samehadaku.email/daftar-anime-2/page/13/?order=latest&status&type"
+html <- read_html(url13)
+```
+
+```{r}
+Judul <- html %>% 
+    html_nodes("h2") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Rating <- html %>% 
+    html_nodes(".skor") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- html %>% 
+    html_nodes(".type") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Penayangan <- matrix(Penayangan, nrow = length(Penayangan)/2,ncol = 2, byrow = T)
+Penayangan <- as.data.frame(Penayangan)
+colnames(Penayangan)<-c("a","b")
+```
+
+```{r}
+Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
+```
+
+```{r}
+Genre <- html %>% 
+    html_nodes(".genres") %>% 
+    html_text(trim = TRUE)
+```
+
+```{r}
+Genre <- str_extract(Genre, "^[A-Z][a-z]*")
+```
+
+```{r}
+Daftar_Anime <- data.frame(Judul, Rating, Penayangan$new_col, Genre)
+Daftar_Anime$Rating <- as.numeric(Daftar_Anime$Rating)
+Daftar_Anime
+str(Daftar_Anime)
+```
+
+
+
