@@ -1,7 +1,7 @@
 # Web-Scraping
 
 <p align="center">
-  <img width="750" height="400" src="pngegg.png">
+  <img width="750" height="400" src="https://github.com/fidafarihaa/Web-Scraping/blob/main/pngaaa.com-1697352.png">
 </p>
 
 <div align="justify">
