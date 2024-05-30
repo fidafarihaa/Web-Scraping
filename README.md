@@ -30,3 +30,10 @@ Contoh dokumen yang ada pada MongoDB sebagai berikut:
   "Genre": "Action"
 }
 ```
+
+## :desktop_computer: **Visualisasi**
+
+Berikut link visualisasi dari data yang telah di scraping : 
+
+## :woman_with_headscarf: **Pengembang**
+**Fida Fariha Amatullah (G1501231064)**
