@@ -8,13 +8,13 @@
 
 ## :scroll: Deskripsi
 
-Marvel Comics atau Marvel Worldwide Inc. sebelumnya Marvel Publishing Inc. dan Marvel Comics Group adalah nama suatu perusahaan dari Amerika Serikat yang memproduksi buku komik dan media lain yang berkaitan. Marvel pertama kali didirikan dengan nama "Timely Publications" pada tahun 1939 dan sempat berganti nama menjadi "Atlas Comics" sebelum akhirnya menjadi Marvel Comics pada tahun 1961. Sekarang, Marvel telah menjadi salah satu penerbit buku komik terbesar bersama dengan perusahaan saingan lamanya DC Comics (termasuk Superman, Batman dan Wonder Woman). Marvel juga memiliki situs wikinya sendiri. Situs tersebut diluncurkan pada tahun 2006 dan memuat berbagai informasi dalam jagad Marvel.
+Situs Samehadaku adalah situs yang digunakan banyak orang untuk menyaksikan anime dengan subtitle Indonesia terbaru, dengan kualitas video yang sudah HD. Situs ini menawarkan koleksi anime yang lengkap, sehingga menjadi favorit banyak orang.
 
-Kali ini akan dilakukan scrapin website https://www.marvel.com/comics dimana website ini menampilkan judul komik, tahun komik serta penulis komik. Komik-komik setiap karakter seperti spiderman, loki, dan sebagainya tersedia di website ini.
+Kali ini akan dilakukan scrapin website https://samehadaku.email/daftar-anime-2/?order=latest&status=&type= dimana website ini menampilkan Judul Anime, Rating,  Jenis Penanyangan, serta Genre. Anime-Anime seperti Naruto, Kuroko No Basuke, dan sebagainya tersedia di website ini.
 
 ## :bookmark_tabs: Requirements
 
-- Scrapping data menggunakan package R yaitu `rvest` dengan pendukung package lainnya seperti `tidyverse`,`dplyr`,`tidyr` dan `xml2`  
+- Scrapping data menggunakan package R yaitu `rvest` dengan pendukung package lainnya seperti `tidyverse`,`dplyr`,`tidyr` , `stringr` dan `xml2`  
 - RDBMS yang digunakan adalah MongoDB
 - Connect MongoDB ke R menggunakan bantuan package `mongolite`
 
@@ -22,9 +22,11 @@ Kali ini akan dilakukan scrapin website https://www.marvel.com/comics dimana web
 Contoh dokumen yang ada pada MongoDB sebagai berikut:
 ```{
   "_id": {
-    "$oid": "6651874b9d858a8a8d76566b"
+    "$oid": "66582662d0bcb804d162064c"
   },
-  "Judul": "Union Jack the Ripper: Blood Hunt (2024) #1",
-  "Penulis": "ScottWalkerBrown"
+  "Judul": "Kimetsu no Yaiba Season 4 Hashira Geiko-hen",
+  "Rating": 8.28,
+  "Penanyangan": "TV, Ongoing",
+  "Genre": "Action"
 }
 ```
