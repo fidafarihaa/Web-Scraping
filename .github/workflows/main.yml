@@ -24,6 +24,6 @@ jobs:
         install.packages("mongolite")
       shell: Rscript {0} 
     - name: Scrape Data Anime
-      run: Rscript Web-Scraping-Anime-New.R
+      run: Rscript Web-Scraping-Anime-New.Rmd
     - name: Input Data to MongoDB Atlas
-      run: Rscript Web-Scraping-Anime-New.R
+      run: Rscript Web-Scraping-Anime-New.Rmd
