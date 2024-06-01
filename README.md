@@ -33,7 +33,7 @@ Contoh dokumen yang ada pada MongoDB sebagai berikut:
 
 ## :desktop_computer: **Visualisasi**
 
-Berikut link visualisasi dari data yang telah di scraping : https://rpubs.com/fidafarihaa/scraping-samehadaku
+Berikut link visualisasi dari data yang telah di scraping : https://rpubs.com/fidafarihaa/Web-Scraping-Samehadaku
 
 ## :woman_with_headscarf: **Pengembang**
 **Fida Fariha Amatullah (G1501231064)**
