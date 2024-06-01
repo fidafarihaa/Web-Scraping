@@ -2,16 +2,16 @@ name: scrape_anime
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+  - cron: '0 1 * * *'
   workflow_dispatch:
     
 jobs:
-  Anime-scrape:
+  kalibrr-scrape:
     runs-on: macOS-latest
     env:
-      ATLAS_URL: ${{ mongodb+srv://fidafarihaafida:22Mei2001@cluster0.8nxgwh0.mongodb.net/ }}
-      ATLAS_COLLECTION: ${{ Anime }}
-      ATLAS_DB: ${{ scraping }}
+      ATLAS_URL: ${{ secrets.ATLAS_URL }}
+      ATLAS_COLLECTION: ${{ secrets.ATLAS_COLLECTION }}
+      ATLAS_DB: ${{ secrets.ATLAS_DB }}
     steps:
     - name: Start time
       run: echo "$(date) ** $(TZ=Asia/Jakarta date)"
@@ -21,13 +21,9 @@ jobs:
       run: |
         install.packages("rvest", dependencies = TRUE)
         install.packages("tidyverse", dependencies = TRUE)
-		install.packages("xml2")
-		install.packages("dplyr")
-		install.packages("tidyr")
-		install.packages("stringr")
         install.packages("mongolite")
       shell: Rscript {0} 
     - name: Scrape Data Anime
-      run: Rscript Web-Scraping-Anime-New.Rmd
-	- name: Input Data to MongoDB Atlas
-      run: Rscript Web-Scraping-Anime-New.Rmd
+      run: Rscript Web-Scraping-Anime-New.R
+    - name: Input Data to MongoDB Atlas
+      run: Rscript Web-Scraping-Anime-New.R
