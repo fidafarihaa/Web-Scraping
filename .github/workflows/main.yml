@@ -23,6 +23,5 @@ jobs:
       run: |
         Rscript -e 'install.packages(c("rvest", "tidyverse", "mongolite"), dependencies = TRUE)'
       shell: bash
-   - name: Scrape Data Anime
-     run: Rscript Web-Scraping-Anime-New.R
-     shell: bash
+    - name: Scrape Data Anima
+      run: Rscript Web-Scraping-Anime-New.R
