@@ -2,8 +2,8 @@ name: scrape_anime
 
 on:
   schedule:
-    - cron: '0 1 * * *' # Menjadwalkan workflow untuk berjalan setiap hari pada pukul 01:00 UTC
-  workflow_dispatch: # Memungkinkan menjalankan workflow secara manual melalui GitHub UI
+    - cron: '0 1 * * *' 
+  workflow_dispatch: 
     
 jobs:
   anime-scrape:
@@ -17,86 +17,19 @@ jobs:
       run: echo "$(date) ** $(TZ=Asia/Jakarta date)"
       
     - name: Checkout repository
-      uses: actions/checkout@v3 # Mengambil kode dari repository
+      uses: actions/checkout@v3
       
     - name: Set up R
-      uses: r-lib/actions/setup-r@v2 # Mengatur lingkungan R
+      uses: r-lib/actions/setup-r@v2
       
     - name: Install packages
       run: |
-        Rscript -e 'install.packages(c("rvest", "tidyverse", "mongolite"), dependencies = TRUE)' # Menginstal paket yang diperlukan
+        Rscript -e 'install.packages(c("rvest", "tidyverse", "mongolite"), dependencies = TRUE)'
       shell: bash
       
     - name: Scrape Data Anime
       run: |
         Rscript -e '
-          library(rvest)
-          library(dplyr)
-          library(stringr)
-          library(mongolite)
-
-          # Scraping Data
-          message("Scraping Data")
-          Data_Anime <- data.frame(
-            Judul = character(),
-            Rating = numeric(),
-            Penayangan = character(),
-            Genre = character(),
-            stringsAsFactors = FALSE
-          )
-
-          for(i in 1:13) {
-            url <- paste0("https://samehadaku.email/daftar-anime-2/page/", i, "/?order=latest&status&type")
-            html <- read_html(url)
-
-            Judul <- html %>% 
-              html_nodes("h2") %>% 
-              html_text(trim = TRUE)
-
-            Rating <- html %>% 
-              html_nodes(".skor") %>% 
-              html_text(trim = TRUE)
-
-            Rating <- as.numeric(Rating)
-            Rating[is.na(Rating)] <- 0
-
-            Penayangan <- html %>% 
-              html_nodes(".type") %>% 
-              html_text(trim = TRUE)
-
-            Penayangan <- matrix(Penayangan, nrow = length(Penayangan) / 2, ncol = 2, byrow = TRUE)
-            Penayangan <- as.data.frame(Penayangan)
-            colnames(Penayangan) <- c("a", "b")
-            Penayangan$new_col <- do.call(paste, c(Penayangan[c("a", "b")], sep = ", "))
-            Penayangan <- Penayangan$new_col
-
-            Genre <- html %>% 
-              html_nodes(".genres") %>% 
-              html_text(trim = TRUE)
-
-            Genre <- str_extract(Genre, "^[A-Z][a-z]*")
-
-            vektor <- data.frame(
-              Judul,
-              Rating,
-              Penayangan,
-              Genre,
-              stringsAsFactors = FALSE
-            )
-
-            Data_Anime <- rbind(Data_Anime, vektor)
-          }
-
-          print(Data_Anime)
-
-          # Input Data to MongoDB Atlas
-          message("Input Data to MongoDB Atlas")
-          atlas_conn <- mongo(
-            collection = Sys.getenv("ATLAS_COLLECTION"),
-            db = Sys.getenv("ATLAS_DB"),
-            url = Sys.getenv("ATLAS_URL")
-          )
-          atlas_conn$insert(Data_Anime)
-          rm(atlas_conn)
+        Web-Scraping-Anime-New.Rmd  
         '
       shell: bash
