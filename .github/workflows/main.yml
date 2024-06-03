@@ -29,7 +29,5 @@ jobs:
       
     - name: Scrape Data Anime
       run: |
-        Rscript -e '
-        Web-Scraping-Anime-New.Rmd  
-        '
+        Web-Scraping-Anime-New.R 
       shell: bash
