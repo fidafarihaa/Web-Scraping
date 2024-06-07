@@ -12,7 +12,7 @@ Situs Samehadaku adalah situs yang digunakan banyak orang untuk menyaksikan anim
 
 Kali ini akan dilakukan scrapin website https://samehadaku.email/daftar-anime-2/?order=latest&status=&type= dimana website ini menampilkan Judul Anime, Rating,  Jenis Penanyangan, serta Genre. Anime-Anime seperti Naruto, Kuroko No Basuke, dan sebagainya tersedia di website ini.
 
-Pengambilan data diambil setiap hari pada puku 09.00 WIB menggunakan gitflow dan data disimpan ke MongoDB dengan jumlah 3 data/hari.
+Pengambilan data diambil setiap hari pada pukul 09.00 WIB menggunakan gitflow dan data disimpan ke MongoDB dengan jumlah 3 data/hari.
 
 ## :bookmark_tabs: Requirements
 
