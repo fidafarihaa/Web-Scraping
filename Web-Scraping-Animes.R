@@ -43,7 +43,7 @@ for(i in 1:13){
   Data_Anime <- rbind(Data_Anime, vektor) 
 }
 
-srape_data <- sample(1:390,10,replace=F)
+srape_data <- sample(1:390,5,replace=F)
 data_scrape <- Data_Anime[srape_data,]
 
 #===================================== INPUT MONGODB ====================================================================
