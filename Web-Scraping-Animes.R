@@ -17,7 +17,7 @@ Data_Anime <- data.frame(Judul = character(),
                          Penayangan = character(),
                          Genre = character(),
                          stringsAsFactors = FALSE)
-for(i in 1:13){
+for(i in 1:20){
   url <- paste0("https://samehadaku.email/daftar-anime-2/page/",i,"/?order=latest&status&type")
   html<-read_html(url)
   Judul <- html %>% 
