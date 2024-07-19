@@ -18,7 +18,7 @@ Data_Anime <- data.frame(Judul = character(),
                          Penayangan = character(),
                          Genre = character(),
                          stringsAsFactors = FALSE)
-for(i in 1:16){
+for(i in 1:20){
   url <- paste0("https://samehadaku.email/daftar-anime-2/page/",i,"/?title&status&type&order=title")
   html<-read_html(url)
   Judul <- html %>% 
@@ -44,7 +44,7 @@ for(i in 1:16){
   Data_Anime <- rbind(Data_Anime, vektor) 
 }
 
-srape_data <- sample(1:390,3,replace=F)
+srape_data <- sample(1:450,3,replace=F)
 data_scrape <- Data_Anime[srape_data,]
 
 #===================================== INPUT MONGODB ====================================================================
