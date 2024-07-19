@@ -10,6 +10,7 @@ library(tidyr)
 library(stringr)
 
 #================================================== SAMEHADAKU ===============================================================
+#https://samehadaku.email/daftar-anime-2/page/",i,"/?order=latest&status&type
 
 message('Scraping Data')
 Data_Anime <- data.frame(Judul = character(),
@@ -18,7 +19,7 @@ Data_Anime <- data.frame(Judul = character(),
                          Genre = character(),
                          stringsAsFactors = FALSE)
 for(i in 1:20){
-  url <- paste0("https://samehadaku.email/daftar-anime-2/page/",i,"/?order=latest&status&type")
+  url <- paste0("https://samehadaku.email/daftar-anime-2/page/",i,"/?title&status&type&order=title")
   html<-read_html(url)
   Judul <- html %>% 
     html_nodes("h2") %>% 
@@ -43,7 +44,7 @@ for(i in 1:20){
   Data_Anime <- rbind(Data_Anime, vektor) 
 }
 
-srape_data <- sample(1:390,5,replace=F)
+srape_data <- sample(1:390,3,replace=F)
 data_scrape <- Data_Anime[srape_data,]
 
 #===================================== INPUT MONGODB ====================================================================
